@@ -90,7 +90,7 @@ export function HomeScreen({ navigate }: HomeScreenProps) {
             paddingLeft: 4,
           }}
         >
-          My Work
+          Some of My Work
         </motion.div>
 
         {/* Projects only — 4 columns, clean grid */}
