@@ -15,6 +15,8 @@ export const profile = {
       'Turbo Modules',
       'Deep Linking',
       'Push Notifications',
+      'In-App Purchases',
+      'Streaming Video',
       'WebSockets',
       'AirPlay',
       'Google Cast',
