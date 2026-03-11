@@ -5,7 +5,7 @@ export const profile = {
     'https://media.licdn.com/dms/image/v2/D4D03AQFjdFw2vi93xg/profile-displayphoto-scale_200_200/B4DZuPqjDpGUAc-/0/1767641854974?e=1775088000&v=beta&t=bFe8bo8S_51jyHtAckBwo5i6XIrPaZQPJeI1p0zvHmI',
   title: 'Mobile Engineer',
   subtitle: 'React Native · TypeScript · Native Modules',
-  location: 'Santa Catarina, Brazil',
+  location: 'Santa Catarina, Brazil 🇧🇷',
   bio: "I build mobile products people actually use — from 100K-download apps to a health startup I co-founded with 700+ users and a 4.9 rating. I specialize in React Native with a deep focus on native modules, performance, and shipping things that work.",
   stack: {
     'Mobile': [
