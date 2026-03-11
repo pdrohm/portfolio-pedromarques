@@ -1,0 +1,66 @@
+export const profile = {
+  name: 'Pedro Marques',
+  initials: 'PM',
+  avatarUrl:
+    'https://media.licdn.com/dms/image/v2/D4D03AQFjdFw2vi93xg/profile-displayphoto-scale_200_200/B4DZuPqjDpGUAc-/0/1767641854974?e=1775088000&v=beta&t=bFe8bo8S_51jyHtAckBwo5i6XIrPaZQPJeI1p0zvHmI',
+  title: 'Mobile Engineer',
+  subtitle: 'React Native · TypeScript · Native Modules',
+  location: 'Santa Catarina, Brazil',
+  bio: "I build mobile products people actually use — from 100K-download apps to a health startup I co-founded with 700+ users and a 4.9 rating. I specialize in React Native with a deep focus on native modules, performance, and shipping things that work.",
+  stack: {
+    'Mobile': [
+      'React Native',
+      'Expo',
+      'React Native CLI',
+      'Turbo Modules',
+      'Deep Linking',
+      'Push Notifications',
+      'WebSockets',
+      'AirPlay',
+      'Google Cast',
+      'Store Management',
+    ],
+    'Languages': ['TypeScript', 'JavaScript', 'Swift', 'Kotlin', 'Objective-C'],
+    'Backend': ['Node.js', 'GraphQL', 'REST', 'Firebase', 'SQL'],
+    'Tooling': ['Azure Pipelines', 'GitHub Actions', 'CI/CD', 'Amplitude', 'Crashlytics'],
+  } as Record<string, string[]>,
+  experience: [
+    {
+      company: 'Zumba Fitness',
+      role: 'Mobile Engineer',
+      period: '12/2025 → Present',
+      impact: 'Migrating native iOS/Android (Swift & Kotlin) to unified React Native codebase. Built streaming video player with AirPlay & Google Cast integration.',
+    },
+    {
+      company: 'Zubale',
+      role: 'Mobile Engineer',
+      period: '07/2025 → 12/2025',
+      impact: 'Zubale apps empower retailers with gig-economy order fulfillment, store task management, and last-mile logistics. I improved mapping by implementing store-area polygons on orders, enabling accurate in-app displays and workflows for gig workers.',
+    },
+    {
+      company: 'Portal Telemedicina',
+      role: 'Mobile Developer',
+      period: '→ 08/2025',
+      impact: '99% crash-free sessions, 4.9 stars with 10K+ downloads. Modular white label apps.  Replaced Google PDF lib with native solution, extended native video module for picture-in-picture.',
+    },
+    {
+      company: 'Senai Soluções Digitais',
+      role: 'Mobile Developer',
+      period: '12/2022 → 09/2024',
+      impact: 'Led apps with 100K+ downloads. Built AI chatbot for 1K+ daily users. Configured native SDK (Obj-C/Java) for sponsored data — zero mobile data usage.',
+    },
+    {
+      company: 'PelvTime · Co-founder',
+      role: 'Co-Founder & Engineer',
+      period: '',
+      impact: 'Co-founded pelvic physiotherapy startup. Built mobile app from scratch — 700+ users, 50K exercise logs, 4.9/5 rating on both stores.',
+    },
+  ],
+  contact: {
+    email: 'pedromarques.tech@gmail.com',
+    github: 'github.com/pedrohm',
+    linkedin: 'linkedin.com/in/pedro-marques',
+    twitter: '@pedromarques',
+    website: 'phmarques.com.br',
+  },
+};
