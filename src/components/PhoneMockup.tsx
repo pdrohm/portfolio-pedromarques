@@ -13,10 +13,12 @@ const DI_H = 37;
 
 export function PhoneMockup() {
   const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const { current, direction, navigate, goBack } = usePhoneNavigation();
 
   useEffect(() => {
     const update = () => {
+      setIsMobile(window.innerWidth < 768);
       const scaleH = (window.innerHeight - 40) / PHONE_H;
       const scaleW = (window.innerWidth - 120) / PHONE_W;
       setScale(Math.min(1, Math.min(scaleH, scaleW)));
@@ -25,6 +27,27 @@ export function PhoneMockup() {
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
   }, []);
+
+  // On mobile: render the app fullscreen, no phone frame
+  if (isMobile) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          inset: 0,
+          background: '#0a0a10',
+          zIndex: 10,
+        }}
+      >
+        <PhoneScreen
+          current={current}
+          direction={direction}
+          navigate={navigate}
+          goBack={goBack}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
