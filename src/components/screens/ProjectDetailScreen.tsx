@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Github, ExternalLink, Check, X, Play, Volume2, VolumeX } from 'lucide-react';
 import { StatusBar } from '../StatusBar';
@@ -43,11 +43,11 @@ function getReadableAccent(hex: string): string {
   return rgbToHex(r + (255 - r) * lift, g + (255 - g) * lift, b + (255 - b) * lift);
 }
 
-function getVimeoEmbedUrl(url: string, muted: boolean): string | null {
+function getVimeoEmbedUrl(url: string): string | null {
   const match = url.match(/vimeo\.com\/(\d+)/);
   if (!match) return null;
   const id = match[1];
-  return `https://player.vimeo.com/video/${id}?autoplay=1&muted=${muted ? 1 : 0}&title=0&byline=0&portrait=0&controls=0&keyboard=0&transparent=0&dnt=1`;
+  return `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&title=0&byline=0&portrait=0&controls=0&keyboard=0&transparent=0&dnt=1&api=1`;
 }
 
 export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenProps) {
@@ -58,8 +58,15 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [selectedPreview, setSelectedPreview] = useState<{ src: string; label: string } | null>(null);
+  const vimeoIframeRef = useRef<HTMLIFrameElement | null>(null);
   const hasImagePreviews = project.media.some((media) => Boolean(media.previewImage));
-  const vimeoEmbedUrl = project.demoVideo ? getVimeoEmbedUrl(project.demoVideo, isVideoMuted) : null;
+  const vimeoEmbedUrl = project.demoVideo ? getVimeoEmbedUrl(project.demoVideo) : null;
+
+  useEffect(() => {
+    if (!isVideoOpen || !vimeoEmbedUrl || !vimeoIframeRef.current?.contentWindow) return;
+    const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 1 };
+    vimeoIframeRef.current.contentWindow.postMessage(JSON.stringify(payload), '*');
+  }, [isVideoMuted, isVideoOpen, vimeoEmbedUrl]);
 
   return (
     <div
@@ -690,10 +697,16 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
           </div>
           {vimeoEmbedUrl ? (
             <iframe
+              ref={vimeoIframeRef}
               src={vimeoEmbedUrl}
               title={`${project.name} demo`}
               allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
               allowFullScreen
+              onLoad={() => {
+                if (!vimeoIframeRef.current?.contentWindow) return;
+                const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 1 };
+                vimeoIframeRef.current.contentWindow.postMessage(JSON.stringify(payload), '*');
+              }}
               style={{
                 width: '100%',
                 height: '100%',
