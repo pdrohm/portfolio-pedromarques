@@ -9,6 +9,8 @@ const blobs = [
 ];
 
 export function Background() {
+  const currentYear = String(new Date().getFullYear());
+
   return (
     <div
       style={{
@@ -97,9 +99,10 @@ export function Background() {
             style={{
               fontSize: 11,
               fontFamily: 'var(--font-mono)',
-              color: 'rgba(255,255,255,0.2)',
+              color: 'rgba(255,255,255,0.42)',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
+              textShadow: '0 1px 6px rgba(0,0,0,0.55)',
             }}
           >
             {tag}
@@ -123,7 +126,7 @@ export function Background() {
           alignItems: 'flex-end',
         }}
       >
-        {['Senior Engineer', '6+ years', 'Santa Catarina, BR', '2024'].map((tag, i) => (
+        {['Senior Engineer', '6+ years', 'Santa Catarina, BR', currentYear].map((tag, i) => (
           <motion.span
             key={tag}
             initial={{ opacity: 0, x: 10 }}
@@ -132,9 +135,10 @@ export function Background() {
             style={{
               fontSize: 11,
               fontFamily: 'var(--font-mono)',
-              color: 'rgba(255,255,255,0.2)',
+              color: 'rgba(255,255,255,0.42)',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
+              textShadow: '0 1px 6px rgba(0,0,0,0.55)',
             }}
           >
             {tag}
