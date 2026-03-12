@@ -1,3 +1,16 @@
+import zumbaIcon from '../assets/icon/zumba-icon.webp';
+import pelvtimeIcon from '../assets/icon/pelvtime-icon.webp';
+import saudeAmDigitalIcon from '../assets/icon/saudeamdigital-icon.webp';
+import zubaleIcon from '../assets/icon/zubale-icon.webp';
+import estanteVirtualIcon from '../assets/icon/estante-virtual-icon.webp';
+
+const zumbaPreview1 = new URL('../assets/preview/zumba-1.PNG', import.meta.url).href;
+const zumbaPreview2 = new URL('../assets/preview/zumba-2.PNG', import.meta.url).href;
+const pelvtimePreview1 = new URL('../assets/preview/pelvtime-1.PNG', import.meta.url).href;
+const pelvtimePreview2 = new URL('../assets/preview/pelvtime-2.PNG', import.meta.url).href;
+const saudeAmDigitalPreview1 = new URL('../assets/preview/saudeamdigital-1.PNG', import.meta.url).href;
+const saudeAmDigitalPreview2 = new URL('../assets/preview/saudeamdigital-2.PNG', import.meta.url).href;
+
 export interface ProjectMedia {
   label: string;
   description: string;
@@ -35,7 +48,7 @@ export const projects: Project[] = [
     id: 'zumba',
     name: 'Zumba',
     emoji: '💃',
-    iconUrl: '/src/assets/icon/zumba-icon.webp',
+    iconUrl: zumbaIcon,
     tagline: 'Dance fitness workouts worldwide',
     description:
       'The official Zumba app bringing the global fitness party to mobile. I worked on the migration from native iOS/Android (Swift & Kotlin) to a unified React Native codebase. Built the streaming video player with AirPlay & Google Cast integration, enabling seamless workout sessions across devices.',
@@ -62,14 +75,14 @@ export const projects: Project[] = [
         description: 'Full-screen video player with casting support',
         gradient: 'linear-gradient(145deg, #0a1a06 0%, #1a3d0f 50%, #2d5a1a 100%)',
         accent: '#87FE36',
-        previewImage: '/src/assets/preview/zumba-1.PNG',
+        previewImage: zumbaPreview1,
       },
       {
         label: 'Class Player',
         description: 'Browse 100+ on-demand dance fitness classes',
         gradient: 'linear-gradient(145deg, #081408 0%, #163610 50%, #2a5220 100%)',
         accent: '#a8ff6b',
-        previewImage: '/src/assets/preview/zumba-2.PNG',
+        previewImage: zumbaPreview2,
       },
     ],
   },
@@ -77,7 +90,7 @@ export const projects: Project[] = [
     id: 'pelvtime',
     name: 'PelvTime',
     emoji: '🩺',
-    iconUrl: '/src/assets/icon/pelvtime-icon.webp',
+    iconUrl: pelvtimeIcon,
     tagline: 'Pelvic physiotherapy care platform',
     description:
       'PelvTime is the app I co-founded and built to help pelvic physiotherapists manage patients and guide treatment plans with better adherence. The product supports therapists and patients with structured exercise programs, progress tracking, and offline-first workflows, reaching 700+ users, 50K exercise logs, and a 4.9 rating.',
@@ -104,7 +117,7 @@ export const projects: Project[] = [
         description: 'Dashboard for physiotherapists to manage patients and treatments',
         gradient: 'linear-gradient(145deg, #04160F 0%, #0A3D29 50%, #0A6B43 100%)',
         accent: '#004A2E',
-        previewImage: '/src/assets/preview/pelvtime-1.PNG',
+        previewImage: pelvtimePreview1,
 
       },
       {
@@ -112,7 +125,7 @@ export const projects: Project[] = [
         description: 'Animated exercises to keep the patient engaged and motivated',
         gradient: 'linear-gradient(145deg, #03140D 0%, #093321 50%, #0E7A4D 100%)',
         accent: '#23A36B',
-        previewImage: '/src/assets/preview/pelvtime-2.PNG',
+        previewImage: pelvtimePreview2,
       },
 
     ],
@@ -121,7 +134,7 @@ export const projects: Project[] = [
     id: 'saude-am-digital',
     name: 'Saude AM Digital',
     emoji: '🏥',
-    iconUrl: '/src/assets/icon/saudeamdigital-icon.webp',
+    iconUrl: saudeAmDigitalIcon,
     tagline: 'SUS telemedicine for Amazonas',
     description:
       'Saude AM Digital is a teleconsultation app used by citizens in Amazonas through SUS, built in partnership with state government initiatives. I helped launch the product from scratch, rebuilt the home experience, and created specialist medical consultation flows. The same core architecture also supports white-label health apps with shared modules and custom branding per client.',
@@ -148,14 +161,14 @@ export const projects: Project[] = [
         description: 'Prescription and exam document access within the app',
         gradient: 'linear-gradient(145deg, #091A2F 0%, #0F315B 50%, #1B72DB 100%)',
         accent: '#7EC0FF',
-        previewImage: '/src/assets/preview/saudeamdigital-2.PNG',
+        previewImage: saudeAmDigitalPreview2,
       },
       {
         label: 'Teleconsultation flow',
         description: 'Remote consultation flow for SUS citizens in Amazonas',
         gradient: 'linear-gradient(145deg, #07172A 0%, #103663 50%, #1464C9 100%)',
         accent: '#2C9BE8',
-        previewImage: '/src/assets/preview/saudeamdigital-1.PNG',
+        previewImage: saudeAmDigitalPreview1,
       },
      
     ],
@@ -164,7 +177,7 @@ export const projects: Project[] = [
     id: 'zubale',
     name: 'Zubale',
     emoji: '🛒',
-    iconUrl: '/src/assets/icon/zubale-icon.webp',
+    iconUrl: zubaleIcon,
     tagline: 'Gig-economy retail operations platform',
     description:
       'Zubale is a large-scale app for autonomous workers handling in-store operations, picking, packing, and deliveries for major retailers. I contributed to mobile improvements that supported logistics workflows, reliability, and better operational visibility in day-to-day execution.',
@@ -203,7 +216,7 @@ export const projects: Project[] = [
     id: 'estante-virtual-meu-senai',
     name: 'Estante de Livros SENAI',
     emoji: '📚',
-    iconUrl: '/src/assets/icon/estante-virtual-icon.webp',
+    iconUrl: estanteVirtualIcon,
     tagline: 'Digital library for SENAI students',
     description:
       'Educational app from SENAI giving free access to a large digital book catalog with offline reading support. I contributed to mobile improvements focused on stability, UX refinements, and performance for a high-scale learning experience.',
