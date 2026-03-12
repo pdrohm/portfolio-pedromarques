@@ -60,9 +60,9 @@ export const profile = {
   ],
   contact: {
     email: 'pedromarques.tech@gmail.com',
-    github: 'github.com/pedrohm',
-    linkedin: 'linkedin.com/in/pedro-marques',
-    twitter: '@pedromarques',
+    github: 'github.com/pdrohm',
+    linkedin: 'linkedin.com/in/pdrohm',
+    twitter: '@pdrohm',
     website: 'phmarques.com.br',
   },
 };
