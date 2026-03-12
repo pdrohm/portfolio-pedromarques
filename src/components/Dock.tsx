@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
+import { House, UserRound, Mail, type LucideIcon } from 'lucide-react';
 import type { ScreenName } from '../hooks/usePhoneNavigation';
 
 interface DockItem {
   name: string;
-  emoji: string;
+  icon: LucideIcon;
   gradient: string;
   color: string;
   screen: ScreenName;
@@ -12,21 +13,21 @@ interface DockItem {
 const dockItems: DockItem[] = [
   {
     name: 'Home',
-    emoji: '🏠',
+    icon: House,
     gradient: 'linear-gradient(145deg, #1e293b, #0f172a)',
     color: '#64748b',
     screen: 'home',
   },
   {
     name: 'About',
-    emoji: '👤',
+    icon: UserRound,
     gradient: 'linear-gradient(145deg, #1d4ed8, #1e40af)',
     color: '#3b82f6',
     screen: 'about',
   },
   {
     name: 'Contact',
-    emoji: '✉️',
+    icon: Mail,
     gradient: 'linear-gradient(145deg, #0e7490, #155e75)',
     color: '#22d3ee',
     screen: 'contact',
@@ -74,6 +75,7 @@ export function Dock({ navigate, currentScreen }: DockProps) {
       >
       {dockItems.map((item) => {
         const isActive = item.screen === currentKey;
+        const Icon = item.icon;
         return (
           <motion.div
             key={item.name}
@@ -122,7 +124,12 @@ export function Dock({ navigate, currentScreen }: DockProps) {
                   borderTopRightRadius: 14,
                 }}
               />
-              <span style={{ position: 'relative', zIndex: 1, lineHeight: 1, display: 'block' }}>{item.emoji}</span>
+              <Icon
+                size={22}
+                strokeWidth={2.4}
+                color={isActive ? 'rgba(255,255,255,0.96)' : 'rgba(255,255,255,0.8)'}
+                style={{ position: 'relative', zIndex: 1, display: 'block' }}
+              />
             </div>
 
             {/* Active dot — absolutely positioned so it never affects icon alignment */}

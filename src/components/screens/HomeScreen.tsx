@@ -134,6 +134,8 @@ export function HomeScreen({ navigate }: HomeScreenProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
+          whileTap={{ scale: 0.985 }}
+          onClick={() => navigate('about')}
           style={{
             borderRadius: 18,
             background: 'rgba(255,255,255,0.04)',
@@ -142,6 +144,7 @@ export function HomeScreen({ navigate }: HomeScreenProps) {
             display: 'flex',
             alignItems: 'center',
             gap: 12,
+            cursor: 'pointer',
           }}
         >
           <div
