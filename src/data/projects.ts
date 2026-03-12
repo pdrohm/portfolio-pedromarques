@@ -3,6 +3,7 @@ import pelvtimeIcon from '../assets/icon/pelvtime-icon.webp';
 import saudeAmDigitalIcon from '../assets/icon/saudeamdigital-icon.webp';
 import zubaleIcon from '../assets/icon/zubale-icon.webp';
 import estanteVirtualIcon from '../assets/icon/estante-virtual-icon.webp';
+import brokAiIcon from '../assets/icon/brok-ai-icon.png';
 
 const zumbaPreview1 = new URL('../assets/preview/zumba-1.PNG', import.meta.url).href;
 const zumbaPreview2 = new URL('../assets/preview/zumba-2.PNG', import.meta.url).href;
@@ -255,6 +256,7 @@ export const projects: Project[] = [
     id: 'brok-ai',
     name: 'Brok AI',
     emoji: '🥦',
+    iconUrl: brokAiIcon,
     tagline: 'AI nutrition and training guide',
     description:
       'Brok AI is a health companion app focused on practical daily guidance for nutrition and workouts. The app helps users stay consistent by turning food photos into calorie insights, suggesting training paths, and acting as a go-to coach throughout the routine.',
