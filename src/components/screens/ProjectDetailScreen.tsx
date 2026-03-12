@@ -64,7 +64,7 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
 
   useEffect(() => {
     if (!isVideoOpen || !vimeoEmbedUrl || !vimeoIframeRef.current?.contentWindow) return;
-    const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 1 };
+    const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 0.5 };
     vimeoIframeRef.current.contentWindow.postMessage(JSON.stringify(payload), '*');
   }, [isVideoMuted, isVideoOpen, vimeoEmbedUrl]);
 
@@ -704,7 +704,7 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
               allowFullScreen
               onLoad={() => {
                 if (!vimeoIframeRef.current?.contentWindow) return;
-                const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 1 };
+                const payload = { method: 'setVolume', value: isVideoMuted ? 0 : 0.5 };
                 vimeoIframeRef.current.contentWindow.postMessage(JSON.stringify(payload), '*');
               }}
               style={{
