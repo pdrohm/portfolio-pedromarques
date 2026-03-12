@@ -42,13 +42,13 @@ export const profile = {
     {
       company: 'Portal Telemedicina',
       role: 'Mobile Developer',
-      period: '→ 08/2025',
+      period: '08/2024 → 08/2025',
       impact: '99% crash-free sessions, 4.9 stars with 10K+ downloads. Modular white label apps.  Replaced Google PDF lib with native solution, extended native video module for picture-in-picture.',
     },
     {
       company: 'Senai Soluções Digitais',
       role: 'Mobile Developer',
-      period: '12/2022 → 09/2024',
+      period: '12/2022 → 08/2024',
       impact: 'Led apps with 100K+ downloads. Built AI chatbot for 1K+ daily users. Configured native SDK (Obj-C/Java) for sponsored data — zero mobile data usage.',
     },
     {
