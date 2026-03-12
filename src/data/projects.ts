@@ -3,6 +3,7 @@ export interface ProjectMedia {
   description: string;
   gradient: string;
   accent: string;
+  previewImage?: string;
   mockElements?: string[];
 }
 
@@ -19,6 +20,7 @@ export interface Project {
   color: string;
   category: string;
   year: string;
+  demoVideo?: string;
   links: {
     github?: string;
     demo?: string;
@@ -33,8 +35,7 @@ export const projects: Project[] = [
     id: 'zumba',
     name: 'Zumba',
     emoji: '💃',
-    iconUrl:
-      'https://play-lh.googleusercontent.com/-WdNmEfqeTBHDI72SztgkhozgPLyl5k7AOYPZR8yAfCgK0nxMPdT1B2Z9MdORFenBrQ=w240-h480-rw',
+    iconUrl: '/src/assets/icon/zumba-icon.webp',
     tagline: 'Dance fitness workouts worldwide',
     description:
       'The official Zumba app bringing the global fitness party to mobile. I worked on the migration from native iOS/Android (Swift & Kotlin) to a unified React Native codebase. Built the streaming video player with AirPlay & Google Cast integration, enabling seamless workout sessions across devices.',
@@ -50,22 +51,25 @@ export const projects: Project[] = [
     color: '#87FE36',
     category: 'Fitness · Health',
     year: '2025',
+    demoVideo: 'https://vimeo.com/1172916269?share=copy&fl=sv&fe=ci',
     links: {
       appStore: 'https://apps.apple.com/br/app/zumba-dance-exercicios-em-casa/id6447769025',
       playStore: 'https://play.google.com/store/apps/details?id=com.zumba.consumerapp.tv',
     },
     media: [
       {
-        label: 'Workout Player',
+        label: 'Class Workout',
         description: 'Full-screen video player with casting support',
         gradient: 'linear-gradient(145deg, #0a1a06 0%, #1a3d0f 50%, #2d5a1a 100%)',
         accent: '#87FE36',
+        previewImage: '/src/assets/preview/zumba-1.PNG',
       },
       {
-        label: 'Class Discovery',
+        label: 'Class Player',
         description: 'Browse 100+ on-demand dance fitness classes',
         gradient: 'linear-gradient(145deg, #081408 0%, #163610 50%, #2a5220 100%)',
         accent: '#a8ff6b',
+        previewImage: '/src/assets/preview/zumba-2.PNG',
       },
     ],
   },
@@ -73,8 +77,7 @@ export const projects: Project[] = [
     id: 'pelvtime',
     name: 'PelvTime',
     emoji: '🩺',
-    iconUrl:
-      'https://play-lh.googleusercontent.com/ivZMwWrnbNElMdRj86EnAePtjO87MFTVv4YD6X0eCsAXtXGNOZjrKjH37LalBCwbFaU=w240-h480-rw',
+    iconUrl: '/src/assets/icon/pelvtime-icon.webp',
     tagline: 'Pelvic physiotherapy care platform',
     description:
       'PelvTime is the app I co-founded and built to help pelvic physiotherapists manage patients and guide treatment plans with better adherence. The product supports therapists and patients with structured exercise programs, progress tracking, and offline-first workflows, reaching 700+ users, 50K exercise logs, and a 4.9 rating.',
@@ -94,27 +97,31 @@ export const projects: Project[] = [
       appStore: 'https://apps.apple.com/br/app/pelvtime/id6742499632',
       playStore: 'https://play.google.com/store/apps/details?id=br.com.pelvtime',
     },
+    demoVideo: 'https://vimeo.com/1172916166?share=copy',
     media: [
       {
-        label: 'Patient Plans',
-        description: 'Personalized routines and treatment organization for therapists',
+        label: 'Physio Dashboard',
+        description: 'Dashboard for physiotherapists to manage patients and treatments',
         gradient: 'linear-gradient(145deg, #04160F 0%, #0A3D29 50%, #0A6B43 100%)',
         accent: '#004A2E',
+        previewImage: '/src/assets/preview/pelvtime-1.PNG',
+
       },
       {
-        label: 'Progress Tracking',
-        description: 'Exercise adherence and evolution timeline with offline support',
+        label: 'Exercise Progress Tracking',
+        description: 'Animated exercises to keep the patient engaged and motivated',
         gradient: 'linear-gradient(145deg, #03140D 0%, #093321 50%, #0E7A4D 100%)',
         accent: '#23A36B',
+        previewImage: '/src/assets/preview/pelvtime-2.PNG',
       },
+
     ],
   },
   {
     id: 'saude-am-digital',
     name: 'Saude AM Digital',
     emoji: '🏥',
-    iconUrl:
-      'https://play-lh.googleusercontent.com/kVxmo84IorgQhxHGPMI3YLJ6hppk-8oLQwbxZMgm32pJ0UQKp6hrj79Sniyno9oVUQ=w240-h480-rw',
+    iconUrl: '/src/assets/icon/saudeamdigital-icon.webp',
     tagline: 'SUS telemedicine for Amazonas',
     description:
       'Saude AM Digital is a teleconsultation app used by citizens in Amazonas through SUS, built in partnership with state government initiatives. I helped launch the product from scratch, rebuilt the home experience, and created specialist medical consultation flows. The same core architecture also supports white-label health apps with shared modules and custom branding per client.',
@@ -130,31 +137,34 @@ export const projects: Project[] = [
     color: '#2C9BE8',
     category: 'Healthcare · Public Sector',
     year: '2026',
+    demoVideo: 'https://vimeo.com/1172916228?share=copy&fl=sv&fe=ci',
     links: {
       appStore: 'https://apps.apple.com/br/app/sa%C3%BAde-am-digital/id6742512883',
       playStore: 'https://play.google.com/store/apps/details?id=com.ptm.amazonas&hl=pt_BR',
     },
     media: [
       {
-        label: 'Teleconsultation',
-        description: 'Remote consultation flow for SUS citizens in Amazonas',
-        gradient: 'linear-gradient(145deg, #07172A 0%, #103663 50%, #1464C9 100%)',
-        accent: '#2C9BE8',
-      },
-      {
-        label: 'Medical Documents',
+        label: 'Dashboard',
         description: 'Prescription and exam document access within the app',
         gradient: 'linear-gradient(145deg, #091A2F 0%, #0F315B 50%, #1B72DB 100%)',
         accent: '#7EC0FF',
+        previewImage: '/src/assets/preview/saudeamdigital-2.PNG',
       },
+      {
+        label: 'Teleconsultation flow',
+        description: 'Remote consultation flow for SUS citizens in Amazonas',
+        gradient: 'linear-gradient(145deg, #07172A 0%, #103663 50%, #1464C9 100%)',
+        accent: '#2C9BE8',
+        previewImage: '/src/assets/preview/saudeamdigital-1.PNG',
+      },
+     
     ],
   },
   {
     id: 'zubale',
     name: 'Zubale',
     emoji: '🛒',
-    iconUrl:
-      'https://play-lh.googleusercontent.com/NimFgibDy2nNTs3ANdV1ihdRD179MYbsl7pXBEjo5txExLlGDuHg_eGqmWg3GvHidEdD=w240-h480-rw',
+    iconUrl: '/src/assets/icon/zubale-icon.webp',
     tagline: 'Gig-economy retail operations platform',
     description:
       'Zubale is a large-scale app for autonomous workers handling in-store operations, picking, packing, and deliveries for major retailers. I contributed to mobile improvements that supported logistics workflows, reliability, and better operational visibility in day-to-day execution.',
@@ -193,7 +203,7 @@ export const projects: Project[] = [
     id: 'estante-virtual-meu-senai',
     name: 'Estante de Livros SENAI',
     emoji: '📚',
-    iconUrl: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/59/05/4a590573-664f-c558-696f-b7b19227709c/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/200x200ia-75.webp',
+    iconUrl: '/src/assets/icon/estante-virtual-icon.webp',
     tagline: 'Digital library for SENAI students',
     description:
       'Educational app from SENAI giving free access to a large digital book catalog with offline reading support. I contributed to mobile improvements focused on stability, UX refinements, and performance for a high-scale learning experience.',

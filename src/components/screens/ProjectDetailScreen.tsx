@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Github, ExternalLink, Check } from 'lucide-react';
+import { ChevronLeft, Github, ExternalLink, Check, X, Play, Volume2, VolumeX } from 'lucide-react';
 import { StatusBar } from '../StatusBar';
 import { ScreenMockup } from '../ScreenMockup';
 import { projects } from '../../data/projects';
@@ -42,10 +43,23 @@ function getReadableAccent(hex: string): string {
   return rgbToHex(r + (255 - r) * lift, g + (255 - g) * lift, b + (255 - b) * lift);
 }
 
+function getVimeoEmbedUrl(url: string, muted: boolean): string | null {
+  const match = url.match(/vimeo\.com\/(\d+)/);
+  if (!match) return null;
+  const id = match[1];
+  return `https://player.vimeo.com/video/${id}?autoplay=1&muted=${muted ? 1 : 0}&title=0&byline=0&portrait=0&controls=0&keyboard=0&transparent=0&dnt=1`;
+}
+
 export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenProps) {
   const project = projects.find((p) => p.id === projectId);
   if (!project) return null;
   const accentColor = getReadableAccent(project.color);
+  const [loadedPreviews, setLoadedPreviews] = useState<Record<string, boolean>>({});
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+  const [selectedPreview, setSelectedPreview] = useState<{ src: string; label: string } | null>(null);
+  const hasImagePreviews = project.media.some((media) => Boolean(media.previewImage));
+  const vimeoEmbedUrl = project.demoVideo ? getVimeoEmbedUrl(project.demoVideo, isVideoMuted) : null;
 
   return (
     <div
@@ -367,10 +381,76 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
           >
             Previews
           </div>
+          {hasImagePreviews && (
+            <div
+              style={{
+                fontSize: 10,
+                color: 'rgba(255,255,255,0.45)',
+                fontFamily: 'var(--font-body)',
+                marginBottom: 8,
+              }}
+            >
+              Tap preview to expand
+            </div>
+          )}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
             {project.media.map((media, i) => (
               <div key={media.label}>
-                <ScreenMockup media={media} index={i} />
+                <button
+                  type="button"
+                  onClick={() => media.previewImage && setSelectedPreview({ src: media.previewImage, label: media.label })}
+                  style={{
+                    position: 'relative',
+                    borderRadius: 18,
+                    overflow: 'hidden',
+                    width: '100%',
+                    border: 'none',
+                    background: 'transparent',
+                    padding: 0,
+                    cursor: media.previewImage ? 'zoom-in' : 'default',
+                  }}
+                >
+                  {media.previewImage && !loadedPreviews[`${project.id}-${media.label}`] && (
+                    <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+                      <ScreenMockup media={media} index={i} />
+                    </div>
+                  )}
+                  {media.previewImage && (
+                    <motion.img
+                      initial={{ opacity: 0.2, scale: 1.02 }}
+                      animate={{ opacity: loadedPreviews[`${project.id}-${media.label}`] ? 1 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      src={media.previewImage}
+                      alt={`${project.name} ${media.label} preview`}
+                      onLoad={() =>
+                        setLoadedPreviews((prev) => ({
+                          ...prev,
+                          [`${project.id}-${media.label}`]: true,
+                        }))
+                      }
+                      onError={() =>
+                        setLoadedPreviews((prev) => ({
+                          ...prev,
+                          [`${project.id}-${media.label}`]: false,
+                        }))
+                      }
+                      style={{
+                        position: 'relative',
+                        zIndex: 2,
+                        width: '100%',
+                        aspectRatio: '9/16',
+                        objectFit: 'contain',
+                        objectPosition: 'top center',
+                        background: '#07070f',
+                        borderRadius: 18,
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        boxShadow: '0 8px 28px rgba(0,0,0,0.45)',
+                        display: 'block',
+                      }}
+                    />
+                  )}
+                  {!media.previewImage && <ScreenMockup media={media} index={i} />}
+                </button>
                 <div
                   style={{
                     marginTop: 6,
@@ -388,7 +468,7 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
         </motion.div>
 
         {/* Links */}
-        {(project.links.github || project.links.demo || project.links.appStore || project.links.playStore) && (
+        {(project.links.github || project.links.demo || project.links.appStore || project.links.playStore || project.demoVideo) && (
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -515,9 +595,200 @@ export function ProjectDetailScreen({ projectId, goBack }: ProjectDetailScreenPr
                 )}
               </div>
             )}
+
+            {project.demoVideo && (
+              <button
+                onClick={() => setIsVideoOpen(true)}
+                style={{
+                  width: '100%',
+                  height: 42,
+                  borderRadius: 12,
+                  border: `1px solid ${accentColor}4A`,
+                  background: `${accentColor}1A`,
+                  color: accentColor,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
+                  cursor: 'pointer',
+                  fontSize: 12,
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: 600,
+                }}
+              >
+                <Play size={14} />
+                Video Demo
+              </button>
+            )}
           </motion.div>
         )}
       </div>
+
+      {isVideoOpen && project.demoVideo && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: '#000',
+            zIndex: 100,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            style={{
+              height: 56,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '2px 28px',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
+              background: 'rgba(10,10,15,0.92)',
+            }}
+          >
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.88)', fontFamily: 'var(--font-mono)' }}>
+              {project.name} demo
+            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <button
+                onClick={() => setIsVideoMuted((prev) => !prev)}
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 8,
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  background: 'rgba(255,255,255,0.08)',
+                  color: 'rgba(255,255,255,0.9)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+                aria-label={isVideoMuted ? 'Unmute video' : 'Mute video'}
+              >
+                {isVideoMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+              </button>
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 8,
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  background: 'rgba(255,255,255,0.08)',
+                  color: 'rgba(255,255,255,0.9)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+                aria-label="Close video demo"
+              >
+                <X size={15} />
+              </button>
+            </div>
+          </div>
+          {vimeoEmbedUrl ? (
+            <iframe
+              src={vimeoEmbedUrl}
+              title={`${project.name} demo`}
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+              allowFullScreen
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                background: '#000',
+              }}
+            />
+          ) : (
+            <video
+              src={project.demoVideo}
+              autoPlay
+              muted={isVideoMuted}
+              playsInline
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                background: '#000',
+              }}
+            />
+          )}
+        </div>
+      )}
+
+      {selectedPreview && (
+        <div
+          onClick={() => setSelectedPreview(null)}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(0,0,0,0.88)',
+            zIndex: 110,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              height: 56,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 14px',
+              borderBottom: '1px solid rgba(255,255,255,0.12)',
+              background: 'rgba(10,10,15,0.96)',
+            }}
+          >
+            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.88)', fontFamily: 'var(--font-mono)' }}>
+              {selectedPreview.label}
+            </span>
+            <button
+              onClick={() => setSelectedPreview(null)}
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 8,
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.08)',
+                color: 'rgba(255,255,255,0.9)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+              }}
+              aria-label="Close preview"
+            >
+              <X size={15} />
+            </button>
+          </div>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 12,
+            }}
+          >
+            <img
+              src={selectedPreview.src}
+              alt={`${project.name} preview`}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                borderRadius: 14,
+                border: '1px solid rgba(255,255,255,0.12)',
+                background: '#05050a',
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
