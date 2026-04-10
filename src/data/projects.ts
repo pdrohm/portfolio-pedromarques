@@ -4,6 +4,7 @@ import saudeAmDigitalIcon from '../assets/icon/saudeamdigital-icon.webp';
 import zubaleIcon from '../assets/icon/zubale-icon.webp';
 import estanteVirtualIcon from '../assets/icon/estante-virtual-icon.webp';
 import brokAiIcon from '../assets/icon/brok-ai-icon.png';
+import promoveIcon from '../assets/icon/pm-logo.png';
 
 const zumbaPreview1 = new URL('../assets/preview/zumba-1.PNG', import.meta.url).href;
 const zumbaPreview2 = new URL('../assets/preview/zumba-2.PNG', import.meta.url).href;
@@ -11,6 +12,8 @@ const pelvtimePreview1 = new URL('../assets/preview/pelvtime-1.PNG', import.meta
 const pelvtimePreview2 = new URL('../assets/preview/pelvtime-2.PNG', import.meta.url).href;
 const saudeAmDigitalPreview1 = new URL('../assets/preview/saudeamdigital-1.PNG', import.meta.url).href;
 const saudeAmDigitalPreview2 = new URL('../assets/preview/saudeamdigital-2.PNG', import.meta.url).href;
+const promovePreview1 = new URL('../assets/preview/promove-1.PNG', import.meta.url).href;
+const promovePreview2 = new URL('../assets/preview/promove-2.PNG', import.meta.url).href;
 
 export interface ProjectMedia {
   label: string;
@@ -84,6 +87,55 @@ export const projects: Project[] = [
         gradient: 'linear-gradient(145deg, #081408 0%, #163610 50%, #2a5220 100%)',
         accent: '#a8ff6b',
         previewImage: zumbaPreview2,
+      },
+    ],
+  },
+  {
+    id: 'promove',
+    name: 'Pro Move',
+    emoji: '🎾',
+    iconUrl: promoveIcon,
+    tagline: 'AI-powered movement and form coach',
+    demoVideo: 'https://vimeo.com/1181958342?share=copy&fl=sv&fe=ci',
+    description:
+      'Pro Move is an AI-powered sports movement analysis app that helps users improve technique across different modes like tennis and gym training. Users select a movement, capture it with the camera, and receive actionable feedback to train with better form and consistency.',
+    stack: [
+      'React Native',
+      'TypeScript',
+      'Expo Router',
+      'AI Motion Analysis',
+      'Computer Vision',
+      'Fitness Tracking',
+    ],
+    features: [
+      'Sport mode selection (e.g., Tennis, Gym) with sport-specific experience',
+      'Movement-based capture flow for camera analysis',
+      'Technique/form feedback powered by AI analysis',
+      'Progress tracking for movement quality over time',
+      'Extensible movement library grouped by training focus (e.g., muscle groups)',
+    ],
+    iconGradient: 'linear-gradient(145deg, #7ED957 0%, #2E7D32 100%)',
+    color: '#7ED957',
+    category: 'Sports Tech · AI',
+    year: '2026',
+    links: {
+      appStore: '',
+      playStore: '',
+    },
+    media: [
+      {
+        label: 'Processing Serve Video',
+        description: 'AI-assisted analysis for tennis movement technique',
+        gradient: 'linear-gradient(145deg, #0f1a0f 0%, #1f4d1f 50%, #2e7d32 100%)',
+        accent: '#7ED957',
+        previewImage: promovePreview1,
+      },
+      {
+        label: 'Serve Analysis',
+        description: 'Detailed feedback on movement quality and technique improvements',
+        gradient: 'linear-gradient(145deg, #0d1117 0%, #1f2937 50%, #374151 100%)',
+        accent: '#9AE66E',
+        previewImage: promovePreview2,
       },
     ],
   },
@@ -171,7 +223,7 @@ export const projects: Project[] = [
         accent: '#2C9BE8',
         previewImage: saudeAmDigitalPreview1,
       },
-     
+
     ],
   },
   {
