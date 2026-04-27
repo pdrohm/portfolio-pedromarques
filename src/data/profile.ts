@@ -1,8 +1,7 @@
 export const profile = {
   name: 'Pedro Marques',
   initials: 'PM',
-  avatarUrl:
-    'https://media.licdn.com/dms/image/v2/D4D03AQFjdFw2vi93xg/profile-displayphoto-scale_200_200/B4DZuPqjDpGUAc-/0/1767641854974?e=1775088000&v=beta&t=bFe8bo8S_51jyHtAckBwo5i6XIrPaZQPJeI1p0zvHmI',
+  avatarUrl: '/src/assets/icon/profile.jpeg',  
   title: 'Mobile Engineer',
   subtitle: 'React Native · TypeScript · Native Modules',
   location: 'Santa Catarina, Brazil 🇧🇷',
