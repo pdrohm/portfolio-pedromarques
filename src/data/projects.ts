@@ -5,6 +5,8 @@ import zubaleIcon from '../assets/icon/zubale-icon.webp';
 import estanteVirtualIcon from '../assets/icon/estante-virtual-icon.webp';
 import brokAiIcon from '../assets/icon/brok-ai-icon.png';
 import promoveIcon from '../assets/icon/pm-logo.png';
+import waveIcon from '../assets/icon/wave-icon.png';
+import arcadeIcon from '../assets/icon/arcade-icon.png';
 
 const zumbaPreview1 = new URL('../assets/preview/zumba-1.PNG', import.meta.url).href;
 const zumbaPreview2 = new URL('../assets/preview/zumba-2.PNG', import.meta.url).href;
@@ -14,6 +16,10 @@ const saudeAmDigitalPreview1 = new URL('../assets/preview/saudeamdigital-1.PNG',
 const saudeAmDigitalPreview2 = new URL('../assets/preview/saudeamdigital-2.PNG', import.meta.url).href;
 const promovePreview1 = new URL('../assets/preview/promove-1.PNG', import.meta.url).href;
 const promovePreview2 = new URL('../assets/preview/promove-2.PNG', import.meta.url).href;
+const wavePreview1 = new URL('../assets/preview/wave-1.PNG', import.meta.url).href;
+const wavePreview2 = new URL('../assets/preview/wave-2.PNG', import.meta.url).href;
+const arcadePreview1 = new URL('../assets/preview/arcade-1.PNG', import.meta.url).href;
+const arcadePreview2 = new URL('../assets/preview/arcade-2.PNG', import.meta.url).href;
 
 export interface ProjectMedia {
   label: string;
@@ -136,6 +142,56 @@ export const projects: Project[] = [
         gradient: 'linear-gradient(145deg, #0d1117 0%, #1f2937 50%, #374151 100%)',
         accent: '#9AE66E',
         previewImage: promovePreview2,
+      },
+    ],
+  },
+  {
+    id: 'wave',
+    name: 'Wave',
+    emoji: '🎣',
+    iconUrl: waveIcon,
+    tagline: 'The living map of fishing',
+    description:
+      'Wave is a fishing app I designed and built end to end: a live map that answers one question, is it worth fishing here right now. It puts environment data and recent community reports in the same place, with tide tables, wind, waves and pressure next to what other anglers saw on the water today. Location privacy is part of the product, not a hidden setting: exact spots are never published, only an approximate area.',
+    stack: [
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Mapbox',
+      'Supabase',
+      'React Query',
+      'Skia',
+      'Offline-First',
+    ],
+    features: [
+      'Live map with fishing spots, risk alerts, expiring reports and bait sellers',
+      'Wind, rain, wave and water temperature layers over the coastline',
+      'Tide tables plus wind, swell, pressure, sunrise and moon phase with sources and timestamps',
+      'Catch log with photo or video, species, bait and catch-and-release flag',
+      'Location privacy by design: fuzzed spots, per-post audience, no background tracking',
+      'Offline place search and cached conditions for low-signal coastal areas',
+    ],
+    iconGradient: 'linear-gradient(145deg, #0A6C9C 0%, #063E56 100%)',
+    color: '#0A6C9C',
+    category: 'Outdoor · Maps & Community',
+    year: '2026',
+    links: {
+      demo: 'https://wavefishing.vercel.app',
+    },
+    media: [
+      {
+        label: 'Live Map',
+        description: 'Spots, reports and conditions layered over the coast',
+        gradient: 'linear-gradient(145deg, #04141F 0%, #08536F 50%, #0A6C9C 100%)',
+        accent: '#0A6C9C',
+        previewImage: wavePreview1,
+      },
+      {
+        label: 'Tide & Conditions',
+        description: 'Tide, wind and swell with the source behind every number',
+        gradient: 'linear-gradient(145deg, #03121A 0%, #0A4C66 50%, #2FA9BD 100%)',
+        accent: '#57BFD0',
+        previewImage: wavePreview2,
       },
     ],
   },
@@ -337,6 +393,48 @@ export const projects: Project[] = [
         description: 'Actionable guidance for workouts and daily habits',
         gradient: 'linear-gradient(145deg, #081A10 0%, #0F3D24 50%, #166534 100%)',
         accent: '#4ade80',
+      },
+    ],
+  },
+  {
+    id: 'arcade',
+    name: 'Arcade da Casa',
+    emoji: '🕹️',
+    iconUrl: arcadeIcon,
+    tagline: 'Party games on the TV, controllers on your phone',
+    description:
+      'Arcade da Casa turns a TV and everyone\u2019s phones into a local party console. One server hosts many rooms at once: the TV shows the game shelf and a room code, each guest joins by QR code, picks a color and a name, and that identity carries across every game. Eleven games ship with it, from a 2.5D kart racer to UNO, and a new one is three files in a folder.',
+    stack: ['Node.js', 'WebSockets', 'Canvas 2D', 'PWA', 'Docker', 'Vanilla JS'],
+    features: [
+      'Room-based multiplayer with 4-letter codes and QR join, many rooms per server',
+      'Game engine core: shared identity, timers, reconnect and state persistence',
+      'Eleven games including KART 2.5D racing, UNO, Impostor and Top 10',
+      'Phone controllers as an installable PWA with wake lock and auto-reconnect',
+      'Crash-safe rooms: the server restores every match from disk',
+      'Plugin architecture: drop in game.js, tv.js and phone.js to add a game',
+    ],
+    iconGradient: 'linear-gradient(145deg, #f59e0b 0%, #b45309 100%)',
+    color: '#f59e0b',
+    category: 'Games · Real-Time',
+    year: '2026',
+    links: {
+      github: 'https://github.com/pdrohm/arcade',
+      demo: 'https://arcade.phmarques.com.br/',
+    },
+    media: [
+      {
+        label: 'Game Shelf',
+        description: 'Pick a game from your phone, the room code ties everyone together',
+        gradient: 'linear-gradient(145deg, #0b0e17 0%, #2a3350 50%, #f59e0b 100%)',
+        accent: '#f59e0b',
+        previewImage: arcadePreview1,
+      },
+      {
+        label: 'KART Controller',
+        description: 'The phone becomes a gamepad: analog stick, A to accelerate, Y for turbo',
+        gradient: 'linear-gradient(145deg, #080b12 0%, #182036 50%, #16a34a 100%)',
+        accent: '#16a34a',
+        previewImage: arcadePreview2,
       },
     ],
   },

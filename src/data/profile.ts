@@ -1,7 +1,9 @@
+import profileAvatar from '../assets/icon/profile.jpeg';
+
 export const profile = {
   name: 'Pedro Marques',
   initials: 'PM',
-  avatarUrl: '/src/assets/icon/profile.jpeg',  
+  avatarUrl: profileAvatar,
   title: 'Mobile Engineer',
   subtitle: 'React Native · TypeScript · Native Modules',
   location: 'Santa Catarina, Brazil 🇧🇷',
